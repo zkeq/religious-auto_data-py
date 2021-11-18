@@ -1,4 +1,4 @@
-![GIF](GIF.gif)
+![GIF](https://inews.gtimg.com/newsapp_ls/0/14194170153/0.gif)
 
 #### Python自动化脚本
 
