@@ -53,7 +53,7 @@ for i in range(1, 8):
         # print(index)
         list_emd[index]['question_txt'] = all_list[index]
         list_emd[index]['answer'] = '正确答案填在此'
-        list_emd[index]['answer_txt'] = '使用说明:将正确答案填入answer的引号中就可,多选不用间隔,示例 *A* *ABCD*'
+        list_emd[index]['answer_txt'] = '使用说明：将正确答案填入answer的引号中就可，多选不用间隔，示例 *A* *ABCD*'
     list_end.append(list_emd)
 
 # print(list_end)

@@ -1,3 +1,5 @@
+![GIF](GIF.gif)
+
 #### Python自动化脚本
 
 - 为宗教自动化答题脚本的python爬虫
@@ -9,10 +11,10 @@
 3. 将文件放在 `end_demo.py` 同目录下
 4. 调整 `end_demo.py`中的文件名参数
 5. 运行 `end_demo.py`
-6. 将控制台的复制到某个文件中, 替换 `topicid_`为`空`
-7. 将替换好的列表粘贴至`list_zj.py`的`all_list`中
-8. 将`'id':`替换为 `'id': 'topicid_`
-9. 运行 `all_list.py`
-10. 将得到的列表格式化后填脚本的`data.js`中
-11. 自行填写相关选项
+6. 将控制台的列表粘贴至`list_zj.py`的`all_list`中
+7. 运行 `all_list.py`
+8. 将得到的列表传入  [json格式化页面](https://www.bejson.com/explore/index_new/)https://www.bejson.com/explore/index_new/)
+9. 格式化后填入VScode中消除所有因`,`导致的换行,修复所有飘红(如non_red.js)
+10. 将填入脚本的`data.js` 的列表中 (注意格式)
+11. 自行填写 题目的正确选项
 12. 即可使用
