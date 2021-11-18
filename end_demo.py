@@ -30,7 +30,7 @@ for i in range(1, 8):
         a += 1
     # print(all_list)
     all_list.remove(0)
-    all_list.append('100、 迷信本质上是一种世界观，宗教则是少数迷信职业者骗取钱财坑害百姓的手段|正确||错误|')
+    all_list.append('请依据id自行替换此值.....|正确||错误|')
     # print(all_list)
 
     a = 0
