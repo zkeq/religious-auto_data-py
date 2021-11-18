@@ -1,10 +1,13 @@
 ![GIF](https://edu-image.nosdn.127.net/D97468EE8EBE2D04A09C4B76A3F55FE6.gif)
 
-#### Python自动化脚本
+### Python自动化脚本
 
 - 为宗教自动化答题脚本的python爬虫
+- python环境:3.9
+- 所需的库:`lxml` 
+  -  `pip install lxml`
 
-##### 使用方法
+### 使用方法
 
 1. 保存网页为本地文件(越多越好)
 2. 删除选项中的所有 '`、`',(标题里面的不要删,这是判断标题和选项的依据....)
