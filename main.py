@@ -1,4 +1,6 @@
 # coding:utf-8
+# 引入正则库,字符串搜索
+import re
 # 引入提取网页的xpath库
 from lxml import etree
 # 先定义一个列表,作为第一层列表使用.(后面还有排序,去重什么的)
@@ -44,11 +46,23 @@ for i in range(1, 8):
             # 所以我们就是第一次循环的时候,保存一个0的值,
             # 第二次循环到标题才会保存接下来赋予的标题和选项的值
             all_list.append(c)
+            # 增加标题的报错信息
+            try:
+                # 搜索是否标题中含有数字,没有的话就抛出一个异常
+                if not bool(re.search(r'\d', new_title.text)):
+                    raise Exception
+            # 捕捉这个异常并打破循环,(因为标题和选项如果对不上的话,会全部乱掉..)
+            except Exception as e:
+                print('触发报错,该标题中没有发现数字,请自行添加:',new_title.text)
+                break
             # 这就是赋予标题的值
             # 这个text是因为 上面说过了,这个new_titile并不是一个字符串,而是一个对象类型
             c = new_title.text
         # 判断不是标题的时候执行逻辑
         if '、' not in new_title.text:
+            # 增加抛错提示,这里是判断是否是标题中含有数字
+            if bool(re.search(r'\d', new_title.text)):
+                print('选项中发现了数字,请确认这不是标题,有标题则数据作废!:',new_title.text)
             # 这里就是单竖杠将标题和选项隔开,然后选项之间是双竖杠隔开
             c += '|' + new_title.text + '|'
             # 因为标题会由很多的空格和换行符,这里要全部去掉
@@ -108,7 +122,7 @@ for i in range(1, 8):
         # 没啥用,就是好看,做个提示而已(跟原来格式保持一致....)(但是没啥用)
         list_emd[index]['answer_txt'] = '使用说明：将正确答案填入answer的引号中就可，多选不用间隔，示例 *A* *ABCD*'
     # print(len(list_emd))
-    # 将每次循环html文件得到的内存传入列表中,即为列表套列表套字典..
+    # 将每次循环html文件得到的内容传入列表中,即为列表套列表套字典..
     list_end.append(list_emd)
 
 # print(list_end)
@@ -149,4 +163,5 @@ if __name__ == '__main__':
     # print(new_list_2)
     new_list = sorted ( new_list_2, key=lambda r: r [ 'id' ] )
     print (new_list)
-    print ( '总计:', len ( new_list), '条数据' )
+    # 打印警告信息和统计信息
+    print ( '总计:', len ( new_list), '条数据','\n注意:请划到顶部确认那些东西是不是标题!!!!' )
