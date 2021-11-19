@@ -53,7 +53,7 @@ for i in range(1, 8):
                     raise Exception
             # 捕捉这个异常并打破循环,(因为标题和选项如果对不上的话,会全部乱掉..)
             except Exception as e:
-                print('触发报错,该标题中没有发现数字,请自行添加:',new_title.text)
+                print('触发报错,应该识别为标题的地方出现了选项(即没有数字):\n',new_title.text)
                 break
             # 这就是赋予标题的值
             # 这个text是因为 上面说过了,这个new_titile并不是一个字符串,而是一个对象类型
