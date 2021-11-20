@@ -37,7 +37,9 @@ for i in range(1, 48):
         # # except Exception as e:
         # # continue
         # # print(type(id_num))
-        # 判断title是标题还是选项(因为标题全部都含有顿号....本来想用数字判断..写的太长逻辑没接上....所以这就要求选项中不可含有顿号,否则会被识别成标题,这之后的所以选项都会乱掉的....)
+        # 判断title是标题还是选项(因为标题全部都含有顿号....本来想用数字判断..写的太长逻辑没接上....
+        # 所以这就要求选项中不可含有顿号,否则会被识别成标题,这之后的所以选项都会乱掉的....
+        # 嘻嘻后来我找到方法了.....折腾了很长时间)
         if '、' in new_title.text and bool(re.search(r'\d', new_title.text)):
             # 是标题的话就传入列表中,为什么这样写呢?
             # 是因为这是从第二个循环开始写的
@@ -46,22 +48,22 @@ for i in range(1, 48):
             # 所以我们就是第一次循环的时候,保存一个0的值,
             # 第二次循环到标题才会保存接下来赋予的标题和选项的值
             all_list.append(c)
-            # 增加标题的报错信息
-            # try:
-            #     # 搜索是否标题中含有数字,没有的话就抛出一个异常
-            #     if not bool(re.search(r'\d', new_title.text)):
-            #         raise Exception
-            # # 捕捉这个异常并打破循环,(因为标题和选项如果对不上的话,会全部乱掉..)
-            # except Exception as e:
-            #     print('触发报错,应该识别为标题的地方出现了选项(即没有数字):\n',new_title.text)
-            #     break
-            # 这就是赋予标题的值
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # 增加标题的报错信息
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # try:
+            # # # # # # # # # # # # # # # # # # # # # # # # # # #     # 搜索是否标题中含有数字,没有的话就抛出一个异常
+            # # # # # # # # # # # # # # # # # # # # # # # # # # #     if not bool(re.search(r'\d', new_title.text)):
+            # # # # # # # # # # # # # # # # # # # # # # # # # # #         raise Exception
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # # 捕捉这个异常并打破循环,(因为标题和选项如果对不上的话,会全部乱掉..)
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # except Exception as e:
+            # # # # # # # # # # # # # # # # # # # # # # # # # # #     print('触发报错,应该识别为标题的地方出现了选项(即没有数字):\n',new_title.text)
+            # # # # # # # # # # # # # # # # # # # # # # # # # # #     break
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # 这就是赋予标题的值
             # 这个text是因为 上面说过了,这个new_titile并不是一个字符串,而是一个对象类型
             c = new_title.text
         # 判断不是标题的时候执行逻辑
         else:
             # 增加抛错提示,这里是判断是否是标题中含有数字
-            if bool(re.search(r'\d', new_title.text)):
+            if bool(re.search(r'\d', new_title.text)) or '、' in new_title.text:
                 print('请确认这不是标题 || ', new_title.text)
             # 这里就是单竖杠将标题和选项隔开,然后选项之间是双竖杠隔开
             c += '|' + new_title.text + '|'
@@ -165,10 +167,10 @@ def deletedup(li):
 # 入口函数
 if __name__ == '__main__':
     # 对于得到的列表去重
-    new_list_2 = deletedup(list_end)
+    list_tools = deletedup(list_end)
     # 打印信息,完成任务,下一步去格式化就好啦!
     # print(new_list_2)
-    new_list = sorted(new_list_2, key=lambda r: r['id'])
+    new_list = sorted(list_tools, key=lambda r: r['id'])
     print(new_list)
     # 打印警告信息和统计信息
-    print('总计:', len(new_list), '条数据','\n注意:请划到顶部确认那些东西是不是标题!!!!')
+    print('总计:', len(new_list), '条数据', '\n注意:请划到顶部确认那些东西是不是标题!!!!')
