@@ -6,7 +6,11 @@ from lxml import etree
 # 先定义一个列表,作为第一层列表使用.(后面还有排序,去重什么的)
 list_end = []
 # 这里进入一个循环,即为html的文件名 *.html ,左等右不等
+<<<<<<< Updated upstream
 for i in range(1, 8):
+=======
+for i in range(1, 48):
+>>>>>>> Stashed changes
     # 定义html的文件路径
     path = '%s.html' % i
     # 以utf-8的格式打开html文件
@@ -47,10 +51,23 @@ for i in range(1, 8):
             # 第二次循环到标题才会保存接下来赋予的标题和选项的值
             all_list.append(c)
             # 增加标题的报错信息
+<<<<<<< Updated upstream
             try:
                 # 搜索是否标题中含有数字,没有的话就抛出一个异常
                 if not bool(re.search(r'\d', new_title.text)):
                     raise Exception
+=======
+            # try:
+            # 搜索是否标题中含有数字,没有的话就抛出一个异常
+            if not bool(re.search(r'\d', str_title)):
+                # print(str_title)
+                str_title = str_title.replace('、', '')
+                # print(str_title)
+                c += '|' + str_title + '|'
+                # continue
+                # goto(69)
+                # raise Exception
+>>>>>>> Stashed changes
             # 捕捉这个异常并打破循环,(因为标题和选项如果对不上的话,会全部乱掉..)
             except Exception as e:
                 print('触发报错,应该识别为标题的地方出现了选项(即没有数字):\n',new_title.text)
