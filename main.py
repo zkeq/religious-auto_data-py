@@ -33,13 +33,12 @@ for i in range(1, 48):
         _dict = dict(_id[index].attrib).get('id')
         # # try:
         # 每次循环a的值+1(下面会有),即为遍历title,
-        str_title = title[a]
-        str_title = str_title.text
+        new_title = title[a]
         # # except Exception as e:
         # # continue
         # # print(type(id_num))
         # 判断title是标题还是选项(因为标题全部都含有顿号....本来想用数字判断..写的太长逻辑没接上....所以这就要求选项中不可含有顿号,否则会被识别成标题,这之后的所以选项都会乱掉的....)
-        if '、' in str_title:
+        if '、' in new_title.text and bool(re.search(r'\d', new_title.text)):
             # 是标题的话就传入列表中,为什么这样写呢?
             # 是因为这是从第二个循环开始写的
             # 因为标题进入1次,选项要进入4次
@@ -49,29 +48,23 @@ for i in range(1, 48):
             all_list.append(c)
             # 增加标题的报错信息
             # try:
-            # 搜索是否标题中含有数字,没有的话就是选项
-            if not bool(re.search(r'\d', str_title)):
-                print('请确认这不是标题||', str_title)
-                # str_title = str_title.replace(r'、',r'')
-                # print(str_title)
-                # 最后想起来的,就是判断为选项的时候,触发选项
-                c += '|' + str_title + '|'
-                # goto(69)
-                # raise Exception
-            # 捕捉这个异常并打破循环,(因为标题和选项如果对不上的话,会全部乱掉..)
+            #     # 搜索是否标题中含有数字,没有的话就抛出一个异常
+            #     if not bool(re.search(r'\d', new_title.text)):
+            #         raise Exception
+            # # 捕捉这个异常并打破循环,(因为标题和选项如果对不上的话,会全部乱掉..)
             # except Exception as e:
             #     print('触发报错,应该识别为标题的地方出现了选项(即没有数字):\n',new_title.text)
             #     break
             # 这就是赋予标题的值
             # 这个text是因为 上面说过了,这个new_titile并不是一个字符串,而是一个对象类型
-            c = str_title
+            c = new_title.text
         # 判断不是标题的时候执行逻辑
-        if '、' not in str_title:
+        else:
             # 增加抛错提示,这里是判断是否是标题中含有数字
-            if bool(re.search(r'\d', str_title)):
-                print('请确认这不是标题||', str_title)
+            if bool(re.search(r'\d', new_title.text)):
+                print('请确认这不是标题 || ', new_title.text)
             # 这里就是单竖杠将标题和选项隔开,然后选项之间是双竖杠隔开
-            c += '|' + str_title + '|'
+            c += '|' + new_title.text + '|'
             # 因为标题会由很多的空格和换行符,这里要全部去掉
             c = c.replace('\n', '').replace('\r', '').replace('\t', '')
         # # print(new_title)
@@ -178,4 +171,4 @@ if __name__ == '__main__':
     new_list = sorted(new_list_2, key=lambda r: r['id'])
     print(new_list)
     # 打印警告信息和统计信息
-    print('总计:', len(new_list), '条数据', '\n注意:请划到顶部确认那些东西是不是标题!!!!')
+    print('总计:', len(new_list), '条数据','\n注意:请划到顶部确认那些东西是不是标题!!!!')
