@@ -1,4 +1,4 @@
-![GIF](https://edu-image.nosdn.127.net/D97468EE8EBE2D04A09C4B76A3F55FE6.gif)
+![GIF](https://p.sda1.dev/3/e3c749fbc17f207b967086e33cab9899/n11.gif)
 
 ### Python自动化脚本
 
