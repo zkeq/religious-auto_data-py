@@ -15,7 +15,6 @@
 4. 运行 `main.py`
 5. 查看是否含有报错以及相关信息,有 则必须处理(否则数据库就乱掉了)!
 6. 将得到的列表传入  [json格式化页面](https://www.bejson.com/explore/index_new/)https://www.bejson.com/explore/index_new/)
-7. 格式化后填入VScode中消除所有因`,`导致的换行,修复所有飘红(如format_Example.js文件)
 `(因为他这个格式化是通过英文的逗号之类的东西换行,所以会误判,但关系不大,2分钟就可以处理完)`
 8. 将其填入脚本的`data.js` 的列表中 (注意格式)
 9. 自行填写题目的正确选项
