@@ -23,7 +23,8 @@ for i in range(1, 48):
     title = html.xpath('//*//font')
     # 定义两个变量为接下来的循环做铺垫
     a = 0
-    c = 0
+    # 为分隔符做准备
+    c = '、'
     # 以id的长度进行循环 id 和 title的值都为个数 *4...,因为id有空集(下文会去除)
     # print(len(_id))
     # print(len(title))
@@ -34,6 +35,17 @@ for i in range(1, 48):
         # 所以这就要求选项中不可含有顿号,否则会被识别成标题,这之后的所以选项都会乱掉的....
         # 嘻嘻后来我找到方法了.....折腾了很长时间)
         if '、' in new_title.text and bool(re.search(r'\d', new_title.text)):
+            # print(c)
+            # 判断是否含有题号,有则删除题号
+            c = c.split(sep='、', maxsplit=-1)
+            # 如果首项有为数字则为题号
+            if c[0].isdigit():
+                # 删除首项
+                c.remove(c[0])
+                # 再恢复原来的状态
+                # print(c)
+                c = '、'.join(c)
+                # print(c)
             # 是标题的话就传入列表中,为什么这样写呢?
             # 是因为这是从第二个循环开始写的
             # 因为标题进入1次,选项要进入4次
@@ -41,6 +53,7 @@ for i in range(1, 48):
             # 所以我们就是第一次循环的时候,保存一个0的值,
             # 第二次循环到标题才会保存接下来赋予的标题和选项的值
             all_list.append(c)
+            # print(all_list)
             # 这就是赋予标题的值
             # 这个text是因为 上面说过了,这个new_titile并不是一个字符串,而是一个对象类型
             c = new_title.text
@@ -51,15 +64,15 @@ for i in range(1, 48):
                 print('请确认这不是标题 || ', new_title.text)
             # 这里就是单竖杠将标题和选项隔开,然后选项之间是双竖杠隔开
             c += '|' + new_title.text + '|'
-            # 因为标题会由很多的空格和换行符,这里要全部去掉
-            c = c.replace('\n', '').replace('\r', '').replace('\t', '').replace('、', '')
-            c = re.sub(r'[0-9]+', '', c)
+            # 因为标题会由很多的空格和换行符,这里要全部去掉('、'不要去,前面用到了)
+            # print(c)
+            c = c.replace('\n', '').replace('\r', '').replace('\t', '')
         # # print(new_title)
         # 将a的值+1,也就是遍历的过程
         a += 1
     # # print(all_list)
-    # 将上面赋予列表的第一个没有意义的0去掉
-    all_list.remove(0)
+    # 将上面赋予列表的第一个没有意义的'第一个列表'去掉
+    all_list.remove(all_list[0])
     # 因为这时候标题只剩了99个了,也就是最后一个标题没有获取到
     # 然后这里就是再加一个没有用的东西,用于和选项合并的时候不会报错
     # 后面加了判断,就是后面如果发现这个东西,就进入下一次循环
