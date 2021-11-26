@@ -8,7 +8,7 @@ list_end = []
 # 这里进入一个循环,即为html的文件名 *.html ,左等右不等
 for i in range(1, 48):
     # 定义html的文件路径
-    path = '%s.html' % i
+    path = 'data/%s.html' % i
     # 以utf-8的格式打开html文件
     f = open(path, 'r', encoding='utf-8')
     # 读取html文件
