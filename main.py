@@ -126,6 +126,12 @@ for i in range(1, 48):
         list_emd[index]['question_txt'] = all_list[index]
         # 添加占位符, 方便手动输入答案
         list_emd[index]['answer'] = '正确答案填在此'
+        list_emd[index]['answer_check_1'] = '检验成员1的答案'
+        list_emd[index]['answer_check_2'] = '检验成员2的答案'
+        list_emd[index]['answer_check_3'] = '检验成员3的答案'
+        list_emd[index]['answer_check_4'] = '检验成员4的答案'
+        list_emd[index]['answer_check_5'] = '检验成员5的答案'
+
         # 没啥用,就是好看,做个提示而已(跟原来格式保持一致....)(但是没啥用)
         list_emd[index]['answer_txt'] = '使用说明：将正确答案填入answer的引号中就可，多选不用间隔，示例 *A* *ABCD*'
         list_emd[index]['id'] = '3'
