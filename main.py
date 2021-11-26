@@ -105,6 +105,8 @@ for i in range(1, 48):
         list_emd[index]['answer'] = '正确答案填在此'
         # 没啥用,就是好看,做个提示而已(跟原来格式保持一致....)(但是没啥用)
         list_emd[index]['answer_txt'] = '使用说明：将正确答案填入answer的引号中就可，多选不用间隔，示例 *A* *ABCD*'
+        list_emd[index]['id'] = '3'
+        del list_emd[index]['id']
     # print(len(list_emd))
     # 将每次循环html文件得到的内容传入列表中,即为列表套列表套字典..
     list_end.append(list_emd)
@@ -126,7 +128,7 @@ def deletedup(li):
     # 对于传入的参数进行循环处理
     for d in li:
         # 即为利用id来去重
-        d1 = d['id']
+        # d1 = d['id']
         d2 = d['question_txt']
         # 这里就是上文所说的去掉
         str1 = d['question_txt']
@@ -152,7 +154,7 @@ if __name__ == '__main__':
     list_tools = deletedup(list_end)
     # 打印信息,完成任务,下一步去格式化就好啦!
     # print(new_list_2)
-    new_list = sorted(list_tools, key=lambda r: r['id'])
-    print(new_list)
+    # new_list = sorted(list_tools, key=lambda r: r['id'])
+    print(list_tools)
     # 打印警告信息和统计信息
-    print('总计:', len(new_list), '条数据', '\n注意:请划到顶部确认那些东西是不是标题!!!!')
+    print('总计:', len(list_tools), '条数据', '\n注意:请划到顶部确认那些东西是不是标题!!!!')
