@@ -52,7 +52,8 @@ for i in range(1, 48):
             # 这里就是单竖杠将标题和选项隔开,然后选项之间是双竖杠隔开
             c += '|' + new_title.text + '|'
             # 因为标题会由很多的空格和换行符,这里要全部去掉
-            c = c.replace('\n', '').replace('\r', '').replace('\t', '')
+            c = c.replace('\n', '').replace('\r', '').replace('\t', '').replace('、', '')
+            c = re.sub(r'[0-9]+', '', c)
         # # print(new_title)
         # 将a的值+1,也就是遍历的过程
         a += 1
@@ -121,10 +122,12 @@ def deletedup(li):
     seen = set()
     # 定义空集
     new_list_2 = []
+    print(li)
     # 对于传入的参数进行循环处理
     for d in li:
         # 即为利用id来去重
         d1 = d['id']
+        d2 = d['question_txt']
         # 这里就是上文所说的去掉
         str1 = d['question_txt']
         # 其实也不是去掉,就是进入下一个循环,就是不传.
@@ -133,12 +136,12 @@ def deletedup(li):
         # print(d1)
         # print(seen)
         # 如果没有这个元素才传入,有就不传
-        if d1 not in seen:
+        if d2 not in seen:
             # print(d1)
             # 传入元素
             new_list_2.append(d)
             # 传入集合中,是不是集合意义不大,因为不同页面的题号不同,所有肯定不一样
-            seen.add(d1)
+            seen.add(d2)
     # 返回去重之后的列表
     return new_list_2
 
