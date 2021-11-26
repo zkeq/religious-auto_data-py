@@ -1,8 +1,18 @@
 # coding:utf-8
+# 引入json库
+import json
 # 引入正则库,字符串搜索
 import re
 # 引入提取网页的xpath库
 from lxml import etree
+
+
+def write(path, data):
+    with open(path, 'w', encoding='utf-8') as f:
+        _data = json.dumps(data, ensure_ascii=False)
+        f.write(_data)
+    return True
+
 # 先定义一个列表,作为第一层列表使用.(后面还有排序,去重什么的)
 list_end = []
 # 这里进入一个循环,即为html的文件名 *.html ,左等右不等
@@ -171,3 +181,5 @@ if __name__ == '__main__':
     print(list_tools)
     # 打印警告信息和统计信息
     print('总计:', len(list_tools), '条数据', '\n注意:请划到顶部确认那些东西是不是标题!!!!')
+    out_result = write('result.json', list_tools)
+    print('是否成功写入result.json文件:', out_result)
