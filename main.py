@@ -73,7 +73,7 @@ for i in range(1, 48):
             if bool(re.search(r'\d', new_title.text)) or '、' in new_title.text:
                 print('请确认这不是标题 || ', new_title.text)
             # 这里就是单竖杠将标题和选项隔开,然后选项之间是双竖杠隔开
-            c += '|' + new_title.text + '|'
+            c += '|' + new_title.text
             # 因为标题会由很多的空格和换行符,这里要全部去掉('、'不要去,前面用到了)
             # print(c)
             c = c.replace('\n', '').replace('\r', '').replace('\t', '')
