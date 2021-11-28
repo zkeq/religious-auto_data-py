@@ -2,7 +2,7 @@
 
 ### Python自动化脚本
 
-### 本项目原本为https://github.com/zkeq/religious-auto 的辅助脚本
+### 本项目原本为https://github.com/zkeq/religious-auto 的辅助脚本(完整题库也在此项目中)
 
 #### 现原项目已经失效,故本脚本只能生成题库,并无实际用途.
 
