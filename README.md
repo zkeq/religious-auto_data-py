@@ -1,5 +1,7 @@
 ![GIF](https://edu-image.nosdn.127.net/8CEB4BB4FFC4CE976C084DBAC4DEC415.gif)
 
+https://github.com/aqz236/hnzjdt
+
 ### Python自动化脚本
 
 ### 本项目原本为https://github.com/zkeq/religious-auto 的辅助脚本
